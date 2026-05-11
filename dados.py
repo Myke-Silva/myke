@@ -151,9 +151,12 @@ grupo_produto = df_filtrado.groupby('produto_produto')\
 st.dataframe(grupo_produto)
 
 
-fig, ax1 = plt.subplot(figsize=(12,6))
+fig, ax1 = plt.subplots(figsize=(12,6))
 
-ax1.bar(grupo_produto)['produto_produto'],grupo_produto['produto_valor']
+ax1.bar(
+    grupo_produto['produto_produto'],
+    grupo_produto['produto_valor']
+)
 
 ax2 = ax1.twinx()
 
@@ -172,7 +175,6 @@ ax2.plot(
 ax2.axhline(80, linestyle='--')
 
 ax1.tick_params(axis='x', rotation=45)
-streamlit run dash.py 
 plt.ylim(0,110)
 
 st.pyplot(fig)
